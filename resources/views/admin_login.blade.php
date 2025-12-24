@@ -12,7 +12,9 @@
                         <div class="card-header text-center">
                             <h3>Admin Login</h3>
                         </div>
-
+                        @error('credentials')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                         <div class="card-body">
                             <form method="POST" action="/admin_login">
                                 @csrf
@@ -20,13 +22,19 @@
                                 <div class="mb-3">
                                     <label>Email</label>
                                     <input type="email" class="form-control" placeholder="Enter email" name="email"
-                                        required>
+                                        >
+                                    @error('email')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label>Password</label>
                                     <input type="password" class="form-control" placeholder="Enter password" name="password"
-                                        required>
+                                    >
+                                    @error('password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="d-grid">
