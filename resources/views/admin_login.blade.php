@@ -16,7 +16,7 @@
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                         <div class="card-body">
-                            <form method="POST" action="/admin_login">
+                            <form action="{{ route('loginMatch') }}" method="POST">
                                 @csrf
 
                                 <div class="mb-3">

@@ -22,7 +22,7 @@
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-sm btn-danger mx-2">
-                            <a class="nav-link" href="/logout">Logout</a>
+                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                         </button>
                     </li>
                 </ul>

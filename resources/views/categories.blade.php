@@ -1,5 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Categories')
+
+@section('title', 'Add Category')
+
 @section('content')
-    <h1>categories</h1>
+<div class="container mt-5">
+
+    {{-- ADD CATEGORY FORM --}}
+    @include('category_form')
+
+    {{-- CATEGORY LIST --}}
+    @include('categories_list')
+
+</div>
 @endsection
