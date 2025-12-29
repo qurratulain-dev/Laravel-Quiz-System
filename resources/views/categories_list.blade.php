@@ -53,7 +53,7 @@
                                 <button class="btn btn-secondary"
                                     data-bs-dismiss="modal">Exit</button>
 
-                                <form action="{{ route('deleteCategory', $cat->id) }}"
+                                <form action="{{ route('categories.destroy', $cat->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')

@@ -1,58 +1,68 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Middleware\ValidAdmin;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
 
+// Home page
 Route::get('/', function () {
     return view('welcome');
 });
 
-// ================= ADMIN ROUTES =================
+// ================= AUTH ROUTES =================
 
-Route::group([], function () {
+// Register page
+Route::get('register', function () {
+    return view('register');
+})->name('register');
 
-    // Register
-    Route::get('register', function () {
-        return view('register');
-    })->name('register');
+// Login page
+Route::view('admin-login', 'admin_login')->name('login');
 
-    Route::post('registerSave', [AdminController::class, 'register'])
-        ->name('registerSave');
+Route::controller(AuthController::class)->group(function(){
+// Register submit
+Route::post('registerSave','register')->name('registerSave');
 
-    // Login page;
-Route::view('admin_login', 'admin_login')->name('login');
-// Login submit (POST)
-Route::post('loginMatch', [AdminController::class, 'login'])
-    ->name('loginMatch');
+// Login submit
+Route::post('loginMatch', 'login')->name('loginMatch');
+// Logout
 
-
-
-//     /// middleware protected routes group
-//     Route::middleware([ValidAdmin::class])->group(function () {
-//         Route::get('dashboard', [AdminController::class, 'dashboardPage'])
-//     ->name('dashboard');
-// // Categories page
-//    Route::get('categories', [AdminController::class, 'categories'])
-//         ->name('categories');
-//     });
+Route::get('logout', 'logout')->name('logout')->middleware(['auth']);
+});
 
 
 
-// Dashboard page
-Route::get('dashboard', [AdminController::class, 'dashboardPage'])
-    ->name('dashboard')->Middleware(["auth"]);
-// Categories page
-   Route::get('categories', [AdminController::class, 'categories'])
-        ->name('categories')->Middleware(["auth"]);
-   Route::post('categories', [AdminController::class, 'addCategory'])
-        ->name('addCategory') ->Middleware(["auth"]);
-    Route::delete('categories/{id}', [AdminController::class, 'deleteCategory'])
-    ->name('deleteCategory')
-    ->middleware(['auth']);
+
+// ================= PROTECTED ROUTES =================
+Route::middleware(['auth'])->group(function(){
+
+    // Dashboard
+    Route::get('dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    // Categories
+    Route::controller(CategoryController::class)->group(function(){
+     Route::get('categories','index')->name('categories');
+    Route::post('categories','store')->name('categories.store');
+    Route::delete('categories/{id}', 'destroy')->name('categories.destroy');
+    });
+   
+
+    // Quizzes
+    Route::controller(QuizController::class)->group(function(){
+    Route::get('quizzes/create','create')->name('quizzes.create');
+    Route::post('quizzes', 'store')->name('quizzes.store');
+    });
+   
+
+    // Questions
+    Route::controller(QuestionController::class)->group(function(){
+    Route::get('questions/create/{quiz}','create')->name('questions.create');
+    Route::post('questions/{quiz}','store')->name('questions.store');
+    });
     
 
-// Logout
-    Route::get('logout', [AdminController::class, 'logout'])
-        ->name('logout');
 });
