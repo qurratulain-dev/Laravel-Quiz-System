@@ -21,8 +21,7 @@
 
                                 <div class="mb-3">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="Enter email" name="email"
-                                        >
+                                    <input type="email" class="form-control" placeholder="Enter email" name="email">
                                     @error('email')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -30,16 +29,14 @@
 
                                 <div class="mb-3">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter password" name="password"
-                                    >
+                                    <input type="password" class="form-control" placeholder="Enter password"
+                                        name="password">
                                     @error('password')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary w-100">Login</button>
-                                </div>
+                                {{-- Login Button --}}
+                                <x-submit-button text="Login" type="primary" />
                             </form>
                         </div>
                     </div>

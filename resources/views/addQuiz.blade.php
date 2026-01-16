@@ -48,11 +48,7 @@
                             </div>
 
                             {{-- Submit Button --}}
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">
-                                    Add Quiz
-                                </button>
-                            </div>
+                             <x-submit-button text="Add Quiz" type="primary"/>
                         </form>
                     </div>
                 </div>

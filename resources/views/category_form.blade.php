@@ -1,12 +1,8 @@
 <div class="row justify-content-center">
         <div class="col-md-4">
-
             {{-- Success message --}}
             @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                <x-alert type="success" :message="session('success')" id="testing"/>
             @endif
 
             {{-- Add Category Card --}}
@@ -29,10 +25,8 @@
                             @enderror
                         </div>
 
-                        {{-- Submit Button --}}
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-success w-100">Add Category</button>
-                        </div>
+                        {{-- Submit Button --}} <x-submit-button text="Add Category"/>
+                      
                     </form>
                 </div>
             </div>

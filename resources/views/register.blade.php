@@ -40,9 +40,7 @@
 
                             <!-- Buttons -->
                             <div class="d-flex justify-content-between align-items-center">
-                                <button type="submit" class="btn btn-primary" >
-                                    Register
-                                </button>
+                                 <x-submit-button text="Register" type="primary"/>
                                 <a href="/" class="text-decoration-none btn btn-secondary">
                                     ← Back
                                 </a>
@@ -64,5 +62,4 @@
             </div>
         </div>
     </div>
-
 @endsection

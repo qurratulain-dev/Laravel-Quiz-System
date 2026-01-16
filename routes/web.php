@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function(){
 
     // Categories
     Route::controller(CategoryController::class)->group(function(){
-     Route::get('categories','index')->name('categories');
+    Route::get('categories','index')->name('categories');
     Route::post('categories','store')->name('categories.store');
     Route::delete('categories/{id}', 'destroy')->name('categories.destroy');
     });

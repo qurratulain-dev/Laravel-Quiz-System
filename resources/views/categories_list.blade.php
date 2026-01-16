@@ -57,9 +57,7 @@
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger">
-                                        OK, Delete
-                                    </button>
+                                    <x-submit-button text="OK, Delete" type="danger" />
                                 </form>
                             </div>
 
