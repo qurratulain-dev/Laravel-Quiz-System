@@ -4,61 +4,50 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <!-- crad -->
+                <x-card title="Register">
+                    <form action="{{ route('registerSave') }}" method="POST">
+                        @csrf
 
-                <div class="card shadow">
-                    <div class="card-header text-center bg-primary text-white">
-                        <h4>Register</h4>
-                    </div>
-
-                    <div class="card-body">
-                        <form action="{{ route('registerSave') }}" method="POST">
-                            @csrf
-                            <!-- Name -->
-                            <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter your name">
-                            </div>
-
-                            <!-- Email -->
-                            <div class="mb-3">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter your email">
-                            </div>
-
-                            <!-- Password -->
-                            <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="Enter password">
-                            </div>
-
-                            <!-- Confirm Password -->
-                            <div class="mb-3">
-                                <label class="form-label">Confirm Password</label>
-                                <input type="password" name="password_confirmation" class="form-control"
-                                    placeholder="Confirm password">
-                            </div>
-
-                            <!-- Buttons -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                 <x-submit-button text="Register" type="primary"/>
-                                <a href="/" class="text-decoration-none btn btn-secondary">
-                                    ← Back
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                    @if ($errors->any())
-                        <div class="card-footer text-body-secondary">
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                        {{-- Name --}}
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <x-input name="name" placeholder="Enter your name" />
+                            <x-input-error name="name" />
                         </div>
-                    @endif
-                </div>
+
+                        {{-- Email --}}
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <x-input type="email" name="email" placeholder="Enter your email" />
+                            <x-input-error name="email" />
+                        </div>
+
+                        {{-- Password --}}
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <x-input type="password" name="password" placeholder="Enter password" />
+                            <x-input-error name="password" />
+                        </div>
+
+                        {{-- Confirm Password --}}
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <x-input type="password" name="password_confirmation" placeholder="Confirm password" />
+                        </div>
+
+                        <div class="d-grid">
+                            <x-submit-button text="Register" type="primary" />
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <p class="mb-0">
+                                Already registered?
+                                <a href="{{ route('login') }}">Login here</a>
+                            </p>
+                        </div>
+                    </form>
+                </x-card>
             </div>
         </div>
     </div>

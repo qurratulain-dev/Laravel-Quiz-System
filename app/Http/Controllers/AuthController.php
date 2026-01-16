@@ -10,17 +10,20 @@ class AuthController extends Controller
 {
     // register function
     public function register(Request $request)
-    {
-        $data = $request->validate([
-            'name'     => 'required',
-            'email'    => 'required|email|unique:admins,email',
-            'password' => 'required|confirmed',
-        ]);
+{
+    $data = $request->validate([
+        'name'     => 'required',
+        'email'    => 'required|email|unique:admins,email',
+        'password' => 'required|confirmed',
+    ]);
 
-        Admin::create($data);
+    Admin::create($data);
 
-        return redirect()->route('login');
-    }
+    return redirect()
+        ->route('login')
+        ->with('success', 'Registration successful. Please login.');
+}
+
     // login function
     public function login(Request $request)
     {

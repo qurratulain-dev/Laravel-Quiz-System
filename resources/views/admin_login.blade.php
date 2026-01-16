@@ -7,39 +7,35 @@
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-4">
+                    {{-- Admin Login card  --}}
+                    <x-card title="Admin Login">
 
-                    <div class="card shadow">
-                        <div class="card-header text-center">
-                            <h3>Admin Login</h3>
-                        </div>
-                        @error('credentials')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                        <div class="card-body">
-                            <form action="{{ route('loginMatch') }}" method="POST">
-                                @csrf
+                        <form action="{{ route('loginMatch') }}" method="POST">
+                            <x-error-list />
+                            @csrf
 
-                                <div class="mb-3">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="Enter email" name="email">
-                                    @error('email')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
+                            <div class="mb-3">
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="Enter email" name="email">
+                                <x-input-error name="email" />
+                            </div>
 
-                                <div class="mb-3">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter password"
-                                        name="password">
-                                    @error('password')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                {{-- Login Button --}}
-                                <x-submit-button text="Login" type="primary" />
-                            </form>
-                        </div>
-                    </div>
+                            <div class="mb-3">
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="Enter password" name="password">
+                                <x-input-error name="password" />
+                            </div>
+                            
+                            {{-- Login Button --}}
+                            <x-submit-button text="Login" type="primary" />
+                            <div class="text-center mt-3">
+                                <p class="mb-0">
+                                    Don’t have an account?
+                                    <a href="{{ route('register') }}">Register here</a>
+                                </p>
+                            </div>
+                        </form>
+                    </x-card>
                 </div>
             </div>
         </div>
