@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('title', 'User Registration')
+@section('meta_description', 'Create a new account to access quizzes.')
+
+@section('meta_keywords', 'user registration')
+
 @section('content')
+
+<meta name="robots" content="noindex, nofollow">
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

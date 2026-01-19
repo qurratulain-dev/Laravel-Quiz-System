@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('content')
+    <meta name="robots" content="noindex, nofollow">
     <h1>Welcome, {{ Auth::user()->name }}</h1>
-    <p>This is the admin dashboard where you can manage categories and quizzes.</p>
+    <p>
+        Manage categories and quizzes from your dashboard.
+    </p>
 @endsection
