@@ -62,7 +62,14 @@ Route::middleware(['auth'])->group(function(){
     Route::controller(QuestionController::class)->group(function(){
     Route::get('questions/create/{quiz}','create')->name('questions.create');
     Route::post('questions/{quiz}','store')->name('questions.store');
-    });
     
+    // question list
+        Route::get('/quiz/{quiz}/questions','index')->name('questions.index');
+        Route::get('/questions/{question}/edit', 'edit')->name('questions.edit');
+        Route::put('/questions/{question}', 'update')
+    ->name('questions.update');
 
+Route::delete('/questions/{question}','destroy')
+    ->name('questions.destroy');
+    });
 });
