@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Login')
-@section('meta_description', 'Admin login panel')
+@section('title', 'Login')
+@section('meta_description', 'login panel')
 
 @section('content')
 
@@ -10,8 +10,8 @@
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-4">
-                    {{-- Admin Login card  --}}
-                    <x-card title="Admin Login">
+                    {{-- Login card  --}}
+                    <x-card title="Login">
 
                         <form action="{{ route('loginMatch') }}" method="POST">
                             <x-error-list />

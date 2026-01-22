@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Question;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
@@ -38,4 +39,10 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('categories')->with('succsess','Category deleted successfully');
     }
+    public function categoryQuizzes($id)
+{
+    $category = Category::with('quizzes')->findOrFail($id);
+
+    return view('quizList', compact('category'));
+}
 }

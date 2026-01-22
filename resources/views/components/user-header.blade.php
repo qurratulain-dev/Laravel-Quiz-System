@@ -1,7 +1,7 @@
 <header class=" shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light container px-5">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/admin/dashboard">Quiz Sytem</a>
+            <a class="navbar-brand" href="/user">Quiz Sytem</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -9,18 +9,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/categories">Categories</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="quizzes/create">Quiz</a>
+                        <a class="nav-link" href="/categories">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Welcome</a>
+                        <a class="nav-link" href="/login">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn btn-sm btn-danger mx-2">
-                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                        </button>
+                     <li class="nav-item">
+                        <a class="nav-link" href="">Blog</a>
                     </li>
                 </ul>
                 {{-- <form class="d-flex">

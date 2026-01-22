@@ -17,7 +17,7 @@ class QuestionController extends Controller
 {
     // quiz completed check
     if ($quiz->is_completed) {
-        return redirect()->route('dashboard')
+        return redirect()->route('admin.dashboard')
             ->with('error', 'This quiz is already completed.');
     }
 
@@ -61,7 +61,7 @@ class QuestionController extends Controller
         ]);
 
         return redirect()
-            ->route('dashboard')
+            ->route('admin.dashboard')
             ->with('success', 'Quiz completed successfully.');
     }
 

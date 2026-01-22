@@ -6,8 +6,6 @@
     <title>@yield('title','Online Quiz System')</title>
     <!-- SEO Meta Description -->
     <meta name="description" content="@yield('meta_description', 'Attempt online quizzes and test your knowledge with our smart quiz system')">
-    <!-- SEO Keywords -->
-    <meta name="keywords" content="@yield('meta_keywords','online quiz, quiz system, test knowledge')">
     <!-- SEO Robots -->
     <meta name="robots" content="index,follow">
     <!-- Canonical URL -->
@@ -24,7 +22,15 @@
     <meta property="og:type" content="website">
 </head>
 <body>
-    @include('components.header')
+    @auth
+    @if(auth()->user()->role === 'admin')
+        @include('components.header')
+    @else
+        @include('components.user-header')
+    @endif
+@else
+    @include('components.user-header') 
+@endauth
 
     @yield('content')
 

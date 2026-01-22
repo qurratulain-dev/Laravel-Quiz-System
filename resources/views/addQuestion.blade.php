@@ -14,21 +14,20 @@
                 {{-- Add Question Card --}}
                 <x-card title="Add MCQs">
                     <div class="card border-0 shadow-sm mb-3">
-    <div class="card-body text-center">
-        <h5 class="text-primary mb-1">{{ $quiz->name }}</h5>
-        <small class="text-muted">
-            Category: {{ $quiz->category->name }}
-        </small>
+                        <div class="card-body text-center">
+                            <h5 class="text-primary mb-1">{{ $quiz->name }}</h5>
+                            <small class="text-muted">
+                                Category: {{ $quiz->category->name }}
+                            </small>
 
-        <div class="mt-3">
-            <a href="{{ route('questions.index', $quiz->id) }}"
-               class="btn btn-outline-success btn-sm">
-                Total Questions Added:
-                <strong>{{ $questionCount }}</strong>
-            </a>
-        </div>
-    </div>
-</div>
+                            <div class="mt-3">
+                                <a href="{{ route('questions.index', $quiz->id) }}" class="btn btn-outline-success btn-sm">
+                                    Total Questions Added:
+                                    <strong>{{ $questionCount }}</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <form action="{{ route('questions.store', $quiz->id) }}" method="POST">
                         @csrf
