@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('title', 'Question List')
+@section('md', 'Manage and view all questions for a specific quiz in the Online Quiz System to ensure quizzes are accurate and up-to-date for users.')
 
+@push('head')
+    {{-- Robots (Private Page) --}}
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endpush
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -10,7 +16,7 @@
                 <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>
-                            <h5 class="mb-0">{{ $quiz->name }}</h5>
+<h1 class="text-center mb-3">Questions for Quiz: {{ $quiz->name }}</h1>
                             <small class="text-muted">
                                 Category: {{ $quiz->category->name }}
                             </small>

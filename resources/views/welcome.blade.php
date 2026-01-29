@@ -1,50 +1,63 @@
 @extends('layouts.app')
-@section('title', 'Online Quiz Categories')
-@section('meta_description', 'Test your skills by choosing a category - Online Quiz System')
+
+@section('title', 'Online Quiz System')
+@section('md', 'Explore and test your skills by choosing a category in our Online Quiz System.')
 
 @section('content')
-<div class="container mt-5 text-center">
-    {{-- HEADING --}}
-    <h1>Test Your Skills</h1>
 
-    {{-- SEARCH INPUT --}}
-    <div class="my-4">
-        <form action="" method="GET">
-            <input type="text" name="search" class="form-control mx-auto" style="max-width:400px;" placeholder="Search categories">
-        </form>
+{{-- HERO --}}
+<div class="py-5 text-center text-white"
+     style="background: linear-gradient(135deg, #667eea, #764ba2);">
+    <div class="container">
+        <h1 class="fw-bold display-6 mb-2">🎯 Test Your Skills</h1>
+        <p class="mb-0 opacity-75">Choose a category and start your quiz journey</p>
     </div>
+</div>
 
-    {{-- CATEGORY TABLE --}}
-    <div class="card mt-4 shadow mx-auto" style="max-width:600px;">
-        <div class="card-header">
-            <h2>Category List</h2>
+<div class="container my-5">
+
+    {{-- CATEGORY --}}
+    <div class="card shadow-lg border-0 mx-auto" style="max-width:750px;">
+        <div class="card-header bg-white text-center">
+            <h4 class="mb-0 fw-semibold">📚 Available Categories</h4>
         </div>
 
-        <div class="card-body p-2">
-            <table class="table table-bordered text-center align-middle mb-0" style="font-size:14px;">
-                <thead>
+        <div class="card-body p-0">
+            <table class="table table-hover text-center align-middle mb-0">
+                <thead class="table-light">
                     <tr>
-                        <th style="width:10%;">#</th>
-                        <th style="width:60%;">Category</th>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Quizzes</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    @if (isset($categories) && $categories->count())
-                        @foreach ($categories as $cat)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $cat->name }}</td>
-                            </tr>
-                        @endforeach
-                    @else
+                    @forelse ($categories as $cat)
                         <tr>
-                            <td colspan="3" class="text-center text-danger">No categories available.</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                <a href="{{ route('categories.questions', $cat->id) }}"
+                                   class="fw-semibold text-decoration-none">
+                                    {{ $cat->name }}
+                                </a>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary">
+                                    {{ $cat->quizzes_count }}
+                                </span>
+                            </td>
                         </tr>
-                    @endif
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-danger py-4">
+                                No categories found
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
     </div>
+
 </div>
 @endsection

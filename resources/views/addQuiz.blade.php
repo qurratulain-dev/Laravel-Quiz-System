@@ -1,5 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Add Quiz')
+@section('title', 'Add New Quiz - Admin Panel')
+@section('md','Create a new quiz by selecting a category from the admin panel and efficiently manage quizzes.')
+
+@push('head')
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endpush
 
 @section('content')
     <div class="container">

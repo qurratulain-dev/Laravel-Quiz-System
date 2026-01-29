@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Quiz List')
+@section('title', 'Quizzes in ' . $category->name)
+@section('md', 'Browse all quizzes available in the ' . $category->name . ' category and start testing your knowledge online.')
 
+@push('head')
+    {{-- Robots & Canonical --}}
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endpush
 @section('content')
 <div class="container mt-5">
     <div class="card shadow">
         <div class="card-header">
-            <h5>Category: {{ $category->name }}</h5>
+            <h1>Category: {{ $category->name }}</h1>
         </div>
 
         <div class="card-body">

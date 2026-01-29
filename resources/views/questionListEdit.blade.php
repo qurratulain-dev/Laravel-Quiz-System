@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
 @section('title', 'Edit Question')
+@section('md', 'Edit and manage quiz question details in the Online Quiz System to ensure accurate and up-to-date quizzes for users.')
 
+@push('head')
+    {{-- Robots (Private Page) --}}
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endpush
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-sm-6">
+<h1 class="text-center mb-3">Edit Question for {{ $question->quiz->name }}</h1>
 
             <x-card title="Edit Question">
                 <div class="text-success text-center mt-2">

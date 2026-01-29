@@ -1,5 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Add MCQs')
+@section('title', 'Add Quiz MCQs |  Admin Panel')
+@section('md','Add multiple choice questions to quizzes from the admin panel and manage quiz questions efficiently.')
+
+@push('head')
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="{{ url()->current() }}">
+@endpush
 
 @section('content')
     <div class="container">
@@ -15,7 +21,7 @@
                 <x-card title="Add MCQs">
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body text-center">
-                            <h5 class="text-primary mb-1">{{ $quiz->name }}</h5>
+                            <h1 class="text-primary mb-1">{{ $quiz->name }}</h1>
                             <small class="text-muted">
                                 Category: {{ $quiz->category->name }}
                             </small>
